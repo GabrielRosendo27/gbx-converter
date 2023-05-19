@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: inter;
+}
+/* header  */
+#header {
+  padding: 30px;
+  background: #162922;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.gbx-text {
+  font-weight: 400;
+  margin-left: 50px;
+  cursor: pointer;
+}
+.menu {
+  display: flex;
+  gap: 10px;
+  margin-right: 45px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+.menu li a {
+  color: #fff;
+  padding: 5px 10px;
+  transition: all 0.3s;
+}
+.menu li a:hover {
+  color: lightgrey;
+}
+/* section  */
+
+.content {
+  max-width: 1200px;
+  margin: 0 300px;
+  padding: 60px 0;
+}
+.initial-text {
+  font-size: 1.9rem;
+  position: relative;
+}
+.convert-text {
+  position: relative;
+}
+.convert-text::after {
+  content: "Totalmente gratuito.";
+  display: block;
+  position: relative;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.input-button-div {
+  margin-top: 60px;
+  display: grid;
+}
+.input-texto {
+  padding: 18px;
+  border: 1px solid #281a1a36;
+  background: #281a1a36;
+}
+.link-text {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+.botao {
+  display: inline-block;
+  padding: 14px 32px;
+  justify-self: center;
+  margin: 20px 0;
+  background: #281a1a36;
+  cursor: pointer;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}

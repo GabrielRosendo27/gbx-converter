@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GBX Converter</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="geral-content">
+    <!-- header  -->
+    <header id="header">
+      <h1 class="gbx-text">GBX Converter</h1>
+      <nav>
+        <ul class="menu">
+          <li><a href="">Como Funciona</a></li>
+          <li><a href="">Quem Somos</a></li>
+          <li><a href="">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- end header  -->
+    <!-- section  -->
+    <section class="content">
+      <div class="initial-text">
+        <h4 class="convert-text">Converta seus vídeos favoritos do youtube em mp3!</h4>
+        <span class="gratuito"></span>
+      </div>
+      <form id="converterForm" class="input-button-div">
+        <label for="link">Link do vídeo do Youtube:</label>
+        <input type="text" id="link" name="link" required />
+        <br />
+        <label for="formato">Formato de saída:</label>
+        <select id="formato" name="formato" required>
+          <option value="mp3">MP3</option>
+          <option value="mp4">MP4</option>
+        </select>
+        <br />
+        <button type="submit">Converter</button>
+      </form>
+      <div id="resultado"></div>
+      <script>
+        const converterForm = document.querySelector("#converterForm");
+        const resultado = document.querySelector("#resultado");
+
+        converterForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const formData = new FormData(converterForm);
+          const link = formData.get("link");
+          const formato = formData.get("formato");
+
+          try {
+            const response = await fetch("http://localhost:3000/converter", {
+              method: "POST",
+              body: JSON.stringify({ link, formato }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            const data = await response.json();
+            resultado.innerHTML = `
+              <p>Link de download:</p>
+              <a href="${data.link}" target="_blank">${data.link}</a>
+            `;
+          } catch (error) {
+            resultado.textContent = `Erro: ${error.message}`;
+          }
+        });
+      </script>
+  </div>
+  </section>
+  </div>
+  <script src="server.js"></script>
+</body>
+
+</html>
